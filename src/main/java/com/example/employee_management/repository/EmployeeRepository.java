@@ -91,4 +91,22 @@ public Employee getEmployeeById(int id) {
         emp.setSalary(rs.getDouble("salary"));
         return emp;
     }, department);
-}}
+}
+  public List<Employee> getEmployeesPaginated(int page, int size) {
+
+	    String sql = "SELECT * FROM employees LIMIT ? OFFSET ?";
+
+	    int offset = page * size;
+
+	    return jdbcTemplate.query(sql, (rs, rowNum) -> {
+	        Employee emp = new Employee();
+
+	        emp.setId(rs.getInt("id"));
+	        emp.setName(rs.getString("name"));
+	        emp.setEmail(rs.getString("email"));
+	        emp.setDepartment(rs.getString("department"));
+	        emp.setSalary(rs.getDouble("salary"));
+
+	        return emp;
+	    }, size, offset);
+	} }

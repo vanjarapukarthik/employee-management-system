@@ -44,4 +44,13 @@ public class EmployeeController {
     @GetMapping("/department/{department}")
     public List<Employee> getEmployeesByDepartment(@PathVariable String department) {
         return service.getEmployeesByDepartment(department);
+    
+    } 
+    
+    @GetMapping("/page")
+    public List<Employee> getEmployeesPaginated(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+
+        return service.getEmployeesPaginated(page, size);
     }}

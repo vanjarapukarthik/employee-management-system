@@ -47,4 +47,7 @@ public class EmployeeService {
     }
     public List<Employee> getEmployeesByDepartment(String department) {
         return repository.getEmployeesByDepartment(department);
+    }
+    public List<Employee> getEmployeesPaginated(int page, int size) {
+        return repository.getEmployeesPaginated(page, size);
     }}
